@@ -130,19 +130,16 @@ var v = stdev( -1.0 );
 <!-- eslint no-undef: "error" -->
 
 ```javascript
-var randu = require( '@stdlib/random-base-randu' );
-var round = require( '@stdlib/math-base-special-round' );
+var uniform = require( '@stdlib/random-array-uniform' );
+var logEachMap = require( '@stdlib/console-log-each-map' );
 var stdev = require( '@stdlib/stats-base-dists-poisson-stdev' );
 
-var lambda;
-var v;
-var i;
+var opts = {
+    'dtype': 'float64'
+};
+var lambda = uniform( 10, 0.0, 20.0, opts );
 
-for ( i = 0; i < 10; i++ ) {
-    lambda = randu() * 20.0;
-    v = stdev( lambda );
-    console.log( 'λ: %d, SD(X;λ): %d', lambda.toFixed( 4 ), v.toFixed( 4 ) );
-}
+logEachMap( 'λ: %0.4f, SD(X;λ): %0.4f', lambda, stdev );
 ```
 
 </section>
@@ -303,8 +300,8 @@ Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
 
 -->
 
-[chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
+[chat-image]: https://img.shields.io/badge/zulip-join_chat-brightgreen.svg
+[chat-url]: https://stdlib.zulipchat.com
 
 [stdlib]: https://github.com/stdlib-js/stdlib
 
